@@ -1,0 +1,8 @@
+.imageCard {
+  flex-basis: calc((100% - 32px) / 3);
+}
+
+.wraperImg {
+  margin: 0;
+  padding: 0;
+}

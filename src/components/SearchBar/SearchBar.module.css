@@ -1,0 +1,40 @@
+header {
+  display: flex;
+  justify-content: center;
+  background-color: darkorchid;
+  padding: 0;
+  margin: 0;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 350px;
+  padding: 15px;
+  width: 400px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+input {
+  border: 3px solid gray;
+  border-radius: 10px;
+  padding: 5px;
+  margin-left: 10px;
+}
+
+.button {
+  margin-left: 15px;
+  display: inline-block;
+  padding: 5px 15px;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid grey; /* Колір рамки кнопки */
+  color: coral; /* Колір тексту кнопки */
+  border-radius: 15px; /* Закруглені кути */
+  transition: background-color 0.3s ease; /* Плавна зміна колірного фону при наведенні */
+}
