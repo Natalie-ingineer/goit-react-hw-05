@@ -1,26 +1,16 @@
-import { NavLink, Route, Routes } from "react-router-dom";
-import css from "./App.module.css";
-import { clsx } from "clsx";
+import { Route, Routes } from "react-router-dom";
 
-const buildLinkClass = ({ isActive }) => {
-  return clsx(css.link, isActive && css.active);
-};
+import { NavBar } from "./NavBar";
+import MoviePage from "../pages/MoviePage";
+import HomePage from "../pages/HomePage";
 
 export const App = () => {
   return (
     <div>
-      <nav className={css.nav}>
-        <NavLink className={buildLinkClass} to="/">
-          Home
-        </NavLink>
-        <NavLink className={buildLinkClass} to="/movies">
-          Movies
-        </NavLink>
-      </nav>
-
+      <NavBar />
       <Routes>
-        <Route path="/" element={<div>Home</div>} />
-        <Route path="/movies" element={<div>Movies</div>} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/movies" element={<MoviePage />} />
         <Route path="*" element={<div>Not found page</div>} />
       </Routes>
     </div>
