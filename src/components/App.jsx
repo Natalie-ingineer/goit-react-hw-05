@@ -6,7 +6,7 @@ import { ErrorMessage } from "./ErrorMessage/ErrorMessage";
 import { LoadMoreBtn } from "./LoadMoreBtn/LoadMoreBtn";
 import { Loader } from "./Loader/Loader";
 import { Toaster } from "react-hot-toast";
-import { fetchArticles } from "../api";
+import { fetchMovie } from "../api";
 
 export const App = () => {
   const [query, setQuery] = useState("");
@@ -38,13 +38,10 @@ export const App = () => {
         setError(false);
         setLoading(true);
 
-        const { results: fetchedData, total_pages } = await fetchArticles(
-          query.split("/")[1],
-          page
-        );
+        const fetchedData = await fetchMovie(query.split("/")[1], page);
         setArticles((prevArticles) => [...prevArticles, ...fetchedData]);
-
-        totalPages.current = total_pages;
+        console.log(fetchedData);
+        // totalPages.current = total_pages;
       } catch (error) {
         setError(true);
       } finally {

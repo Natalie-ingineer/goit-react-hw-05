@@ -1,12 +1,17 @@
 import axios from "axios";
 
-const BASE_URL = "https://api.unsplash.com/search/photos";
-const clientID = "eweU7n7QNHGPet9x6rguFqq5agNu-FnnqAkMJV9TwHY";
+export const fetchMovie = async (query) => {
+  const url = `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`;
 
-export const fetchArticles = async (query, page) => {
-  const response = await axios.get(BASE_URL, {
-    params: { client_id: clientID, query, page, per_page: 10 },
-  });
+  const API_KEY = "0b29f61dccaa81fc9201dda26795b028";
+  const options = {
+    params: {
+      accept: "application/json",
+      api_key: API_KEY,
+    },
+  };
+
+  const response = await axios.get(url, options);
 
   return response.data;
 };
