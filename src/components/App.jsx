@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import { NavBar } from "./NavBar";
 import MoviePage from "../pages/MoviePage";
 import HomePage from "../pages/HomePage";
+import NotFoundPage from "../pages/NotFoundPage";
 
 export const App = () => {
   return (
@@ -11,7 +12,7 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/movies" element={<MoviePage />} />
-        <Route path="*" element={<div>Not found page</div>} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>
   );

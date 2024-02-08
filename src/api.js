@@ -1,7 +1,7 @@
 import axios from "axios";
 
-export const fetchMovie = async (query) => {
-  const url = `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`;
+export const getTrending = async ({ abortController }) => {
+  const url = `https://api.themoviedb.org/3/trending/movie/day?include_adult=false&language=en-US&page=1`;
 
   const API_KEY = "0b29f61dccaa81fc9201dda26795b028";
   const options = {
@@ -11,7 +11,27 @@ export const fetchMovie = async (query) => {
     },
   };
 
-  const response = await axios.get(url, options);
+  const response = await axios.get(url, options, {
+    signal: abortController.signal,
+  });
 
-  return response.data;
+  return response.data.results;
 };
+
+// export const getTrending = async (query, { abortController }) => {
+//   const url = `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`;
+
+//   const API_KEY = "0b29f61dccaa81fc9201dda26795b028";
+//   const options = {
+//     params: {
+//       accept: "application/json",
+//       api_key: API_KEY,
+//     },
+//   };
+
+//   const response = await axios.get(url, options, {
+//     signal: abortController.signal,
+//   });
+
+//   return response.data;
+// };
