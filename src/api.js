@@ -15,7 +15,7 @@ export const getTrending = async ({ abortController }) => {
     signal: abortController.signal,
   });
 
-  return response.data.results;
+  console.log(response.data.results);
 };
 
 // export const getTrending = async (query, { abortController }) => {
