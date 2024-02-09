@@ -13,7 +13,7 @@ export default function HomePage() {
         const fetchedTrending = await getTrending({
           abortController: controller,
         });
-        setTrending((prevTrendind) => [...prevTrendind], fetchedTrending);
+        setTrending((prev) => [...prev, ...fetchedTrending]);
       } catch (error) {
         if (error.code !== "ERR_CANCELED") {
           setError(true);
@@ -27,7 +27,7 @@ export default function HomePage() {
     };
   }, []);
 
-  // console.log(trendings);
+  console.log(trendings);
   // console.log(setTrending);
   return (
     <div>
@@ -35,12 +35,14 @@ export default function HomePage() {
       {error && <p>Oops! ERROR!</p>}
       {trendings.length > 0 && (
         <ul>
-          {trendings.map(({ id, title, poster_path }) => (
+          {trendings.map(({ id, title, backdrop_path }) => (
             <li key={id}>
+              {/* <a> */}
               <img
-                src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+                src={`https://image.tmdb.org/t/p/w500${backdrop_path}`}
                 alt={title}
               ></img>
+              {/* </a> */}
             </li>
           ))}
         </ul>
