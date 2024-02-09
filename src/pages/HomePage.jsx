@@ -13,7 +13,7 @@ export default function HomePage() {
         const fetchedTrending = await getTrending({
           abortController: controller,
         });
-        setTrending((prev) => [...prev, ...fetchedTrending]);
+        setTrending(fetchedTrending);
       } catch (error) {
         if (error.code !== "ERR_CANCELED") {
           setError(true);
@@ -37,16 +37,17 @@ export default function HomePage() {
         <ul>
           {trendings.map(({ id, title, backdrop_path }) => (
             <li key={id}>
-              {/* <a> */}
-              <img
-                src={`https://image.tmdb.org/t/p/w500${backdrop_path}`}
-                alt={title}
-              ></img>
-              {/* </a> */}
+              <a href={`https://image.tmdb.org/t/p/w500${backdrop_path}`}>
+                {title}
+              </a>
             </li>
           ))}
         </ul>
       )}
     </div>
   );
+}
+
+{
+  /* <img src={`https://image.tmdb.org/t/p/w500${backdrop_path}`} alt={title}></img>; */
 }
