@@ -4,6 +4,7 @@ import { NavBar } from "./NavBar";
 import MoviePage from "../pages/MoviePage";
 import HomePage from "../pages/HomePage";
 import NotFoundPage from "../pages/NotFoundPage";
+import MovieDetailsPage from "../pages/MovieDetailsPage";
 
 export const App = () => {
   return (
@@ -12,6 +13,7 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/movies" element={<MoviePage />} />
+        <Route path="/movie/:movieId" element={<MovieDetailsPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>

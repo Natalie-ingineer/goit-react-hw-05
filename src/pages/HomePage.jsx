@@ -36,11 +36,12 @@ export default function HomePage() {
         <ul>
           {trendings.map(({ id, title, backdrop_path }) => (
             <li key={id}>
-              <Link href={`https://image.tmdb.org/t/p/w500${backdrop_path}`}>
-                <img
-                  src={`https://image.tmdb.org/t/p/w500${backdrop_path}`}
+              <Link to={`/movie/${id}`}>
+                {title}
+                {/* <img
+                  // src={`https://image.tmdb.org/t/p/w500${backdrop_path}`}
                   alt={title}
-                ></img>
+                ></img> */}
               </Link>
             </li>
           ))}
