@@ -18,14 +18,21 @@ export default function MoviesPage() {
     setParams(params);
   };
 
+  const handleSubmit = (value) => {
+    setParams({ query: value });
+  };
+
   useEffect(() => {
-    // const controller = new AbortController();
+    const controller = new AbortController();
+
     if (!movieDatas) {
       return;
     }
     async function fetchData() {
       try {
-        const fetchedTrending = await getMovieBySearch();
+        const fetchedTrending = await getMovieBySearch({
+          abortController: controller,
+        });
         setMovieDatas(fetchedTrending);
       } catch (error) {
         if (error.code !== "ERR_CANCELED") {
@@ -35,19 +42,25 @@ export default function MoviesPage() {
     }
     fetchData();
 
-    // return () => {
-    //   controller.abort();
-    // };
+    return () => {
+      controller.abort();
+    };
   }, []);
 
   const searchedMovies = movieDatas.filter((movieData) =>
     movieData.description.toLowerCase().includes(searchMovies.toLowerCase())
   );
+  console.log(searchedMovies);
+  // console.log();
 
   return (
     <div>
       {error && <p>Oops!Error!🤷‍♀️</p>}
-      <SearchMovies value={searchMovies} onChange={changeSearch} />
+      <SearchMovies
+        value={searchMovies}
+        onChange={changeSearch}
+        onSubmit={handleSubmit}
+      />
       {searchMovies.length > 0 && <MovieList items={searchedMovies} />}
     </div>
   );
