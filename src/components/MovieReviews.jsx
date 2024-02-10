@@ -1,3 +1,37 @@
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+
+import { getMovieByIdReviews } from "../api";
+
 export const MovieReviews = () => {
-  return <div>Movie reviews</div>;
+  const { movieId } = useParams();
+  const [reviews, setReviews] = useState([]);
+
+  useEffect(() => {
+    if (!movieId) return;
+
+    async function fetchData() {
+      try {
+        const fetchedMovie = await getMovieByIdReviews(movieId);
+        setReviews(fetchedMovie);
+      } catch (error) {}
+    }
+    fetchData();
+  }, [movieId]);
+
+  return (
+    <div>
+      {reviews.length > 0 && (
+        <ul>
+          {reviews.map((review) => (
+            <li key={review.id}>
+              <div>
+                <p>{review.content}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
 };

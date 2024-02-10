@@ -21,23 +21,24 @@ export const MovieCast = () => {
     fetchData();
   }, [movieId]);
 
-  console.log(casts);
-
   return (
     <div>
       {casts.length > 0 && (
         <ul>
           {casts.map((cast) => (
             <li key={cast.id}>
-              <img
-                src={
-                  cast.profile_path
-                    ? `https://image.tmdb.org/t/p/w500${cast.profile_path}`
-                    : defaultImg
-                }
-                width={250}
-                alt="poster"
-              />
+              <div>
+                <img
+                  src={
+                    cast.profile_path
+                      ? `https://image.tmdb.org/t/p/w500${cast.profile_path}`
+                      : defaultImg
+                  }
+                  width={250}
+                  alt="poster"
+                />
+              </div>
+              <p>{cast.known_for_department}</p>
               <p>{cast.name}</p>
             </li>
           ))}
