@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 
 import { NavBar } from "./NavBar";
-import MoviePage from "../pages/MoviePage";
+import MoviesPage from "../pages/MoviesPage";
 import HomePage from "../pages/HomePage";
 import NotFoundPage from "../pages/NotFoundPage";
 import MovieDetailsPage from "../pages/MovieDetailsPage";
@@ -14,7 +14,7 @@ export const App = () => {
       <NavBar />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/movies" element={<MoviePage />} />
+        <Route path="/movies" element={<MoviesPage />} />
         <Route path="/movie/:movieId" element={<MovieDetailsPage />}>
           <Route path="cast" element={<MovieCast />} />
           <Route path="reviews" element={<MovieReviews />} />

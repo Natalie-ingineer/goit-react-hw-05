@@ -18,6 +18,24 @@ export const getTrending = async ({ abortController }) => {
   return response.data.results;
 };
 
+export const getMovieBySearch = async ({ abortController }) => {
+  const API_KEY = "0b29f61dccaa81fc9201dda26795b028";
+  const url = `https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1`;
+
+  const options = {
+    params: {
+      accept: "application/json",
+      api_key: API_KEY,
+    },
+  };
+
+  const response = await axios.get(url, options, {
+    signal: abortController.signal,
+  });
+
+  return response.data.results;
+};
+
 export const getMovieById = async (movieId) => {
   const API_KEY = "0b29f61dccaa81fc9201dda26795b028";
   const url = `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`;
