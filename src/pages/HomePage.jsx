@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom";
 import { getTrending } from "../api";
 import { useState, useEffect } from "react";
+import { MovieList } from "../components/MovieList";
+import { HomePageTitle } from "../components/HomePageTitle";
 
 export default function HomePage() {
   const [trendings, setTrending] = useState([]);
@@ -30,27 +31,9 @@ export default function HomePage() {
 
   return (
     <div>
-      <h1>Trending today</h1>
+      <HomePageTitle>Trending today</HomePageTitle>
       {error && <p>Oops! ERROR!</p>}
-      {trendings.length > 0 && (
-        <ul>
-          {trendings.map(({ id, title, backdrop_path }) => (
-            <li key={id}>
-              <Link to={`/movie/${id}`}>
-                {title}
-                {/* <img
-                  // src={`https://image.tmdb.org/t/p/w500${backdrop_path}`}
-                  alt={title}
-                ></img> */}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
+      {trendings.length > 0 && <MovieList items={trendings} />}
     </div>
   );
-}
-
-{
-  /* <img src={`https://image.tmdb.org/t/p/w500${backdrop_path}`} alt={title}></img>; */
 }

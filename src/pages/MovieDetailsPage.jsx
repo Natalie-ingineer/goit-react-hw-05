@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, Outlet, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getMovieById } from "../api";
 
@@ -22,26 +22,35 @@ export default function MovieDetailsPage() {
   return (
     <div>
       {movie && (
-        <div>
+        <>
           <div>
-            <img
-              src={
-                movie.poster_path
-                  ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-                  : defaultImg
-              }
-              width={250}
-              alt="poster"
-            />
-          </div>
+            <div>
+              <img
+                src={
+                  movie.poster_path
+                    ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                    : defaultImg
+                }
+                width={250}
+                alt="poster"
+              />
+            </div>
 
-          <div>
-            <p>{movie.original_title}</p>
-            <p>Overview: {movie.overview}</p>
-            <p>Genres: {movie.genres.map((genre) => genre.name).join(", ")}</p>
-            <p>Vote_average: {movie.vote_average}</p>
+            <div>
+              <p>{movie.original_title}</p>
+              <p>Overview: {movie.overview}</p>
+              <p>
+                Genres: {movie.genres.map((genre) => genre.name).join(", ")}
+              </p>
+              <p>Vote_average: {movie.vote_average}</p>
+            </div>
           </div>
-        </div>
+          <>
+            <Link to="cast">Movie cast</Link>
+            <Link to="reviews">Movie reviews</Link>
+          </>
+          <Outlet />
+        </>
       )}
     </div>
   );
