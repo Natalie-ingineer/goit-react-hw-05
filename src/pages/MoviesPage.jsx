@@ -31,6 +31,7 @@ export default function MoviesPage() {
     async function fetchData() {
       try {
         const fetchedTrending = await getMovieBySearch({
+          movieDatas,
           abortController: controller,
         });
         setMovieDatas(fetchedTrending);
