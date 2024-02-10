@@ -40,15 +40,15 @@ export default function MoviesPage() {
     // };
   }, []);
 
-  // const searchedMovies = movieDatas.filter((movieData) =>
-  //   movieData.description.toLowerCase().includes(searchMovies.toLowerCase())
-  // );
+  const searchedMovies = movieDatas.filter((movieData) =>
+    movieData.description.toLowerCase().includes(searchMovies.toLowerCase())
+  );
 
   return (
     <div>
       {error && <p>Oops!Error!🤷‍♀️</p>}
       <SearchMovies value={searchMovies} onChange={changeSearch} />
-      {/* {searchMovies.length > 0 && <MovieList movies={searchedMovies} />} */}
+      {searchMovies.length > 0 && <MovieList items={searchedMovies} />}
     </div>
   );
 }
