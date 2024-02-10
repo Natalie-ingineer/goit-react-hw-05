@@ -19,7 +19,7 @@ export default function MoviesPage() {
   };
 
   const handleSubmit = (value) => {
-    setParams({ searchMovies: value });
+    setParams({ query: value });
   };
 
   useEffect(() => {
@@ -52,7 +52,7 @@ export default function MoviesPage() {
     movieData.description.toLowerCase().includes(searchMovies.toLowerCase())
   );
   console.log(searchedMovies);
-  // console.log();
+  console.log(movieDatas);
 
   return (
     <div>

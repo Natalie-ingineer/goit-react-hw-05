@@ -5,7 +5,7 @@ export const SearchMovies = ({ value, onChange, onSubmit }) => {
         type="text"
         value={value}
         onChange={(evt) => onChange(evt.target.value)}
-        onSubmit={(evt) => onSubmit(evt.target.value)}
+        onSubmit={onSubmit}
       />
     </div>
   );
