@@ -10,20 +10,22 @@ export default function MoviesPage() {
 
   const [params, setParams] = useSearchParams();
   const searchMovies = params.get("searchMovies") ?? "";
+  // console.log(searchMovies);
 
   const changeSearch = (newSearchMovies) => {
     params.set("searchMovies", newSearchMovies);
+    console.log(params);
     setParams(params);
   };
 
   useEffect(() => {
-    const controller = new AbortController();
-
+    // const controller = new AbortController();
+    if (!movieDatas) {
+      return;
+    }
     async function fetchData() {
       try {
-        const fetchedTrending = await getMovieBySearch({
-          abortController: controller,
-        });
+        const fetchedTrending = await getMovieBySearch();
         setMovieDatas(fetchedTrending);
       } catch (error) {
         if (error.code !== "ERR_CANCELED") {
@@ -33,20 +35,20 @@ export default function MoviesPage() {
     }
     fetchData();
 
-    return () => {
-      controller.abort();
-    };
+    // return () => {
+    //   controller.abort();
+    // };
   }, []);
 
-  const searchedMovies = movieDatas.filter((movieData) =>
-    movieData.description.toLowerCase().includes(searchMovies.toLowerCase())
-  );
+  // const searchedMovies = movieDatas.filter((movieData) =>
+  //   movieData.description.toLowerCase().includes(searchMovies.toLowerCase())
+  // );
 
   return (
     <div>
       {error && <p>Oops!Error!🤷‍♀️</p>}
       <SearchMovies value={searchMovies} onChange={changeSearch} />
-      {searchMovies.length > 0 && <MovieList movies={searchedMovies} />}
+      {/* {searchMovies.length > 0 && <MovieList movies={searchedMovies} />} */}
     </div>
   );
 }

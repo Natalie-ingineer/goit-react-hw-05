@@ -18,7 +18,7 @@ export const getTrending = async ({ abortController }) => {
   return response.data.results;
 };
 
-export const getMovieBySearch = async ({ abortController }) => {
+export const getMovieBySearch = async () => {
   const API_KEY = "0b29f61dccaa81fc9201dda26795b028";
   const url = `https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1`;
 
@@ -29,9 +29,7 @@ export const getMovieBySearch = async ({ abortController }) => {
     },
   };
 
-  const response = await axios.get(url, options, {
-    signal: abortController.signal,
-  });
+  const response = await axios.get(url, options);
 
   return response.data.results;
 };
