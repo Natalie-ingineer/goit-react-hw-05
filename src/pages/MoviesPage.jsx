@@ -19,19 +19,19 @@ export default function MoviesPage() {
   };
 
   const handleSubmit = (value) => {
-    setParams({ query: value });
+    setParams({ searchMovies: value });
   };
 
   useEffect(() => {
     const controller = new AbortController();
 
-    if (!movieDatas) {
+    if (!searchMovies) {
       return;
     }
     async function fetchData() {
       try {
         const fetchedTrending = await getMovieBySearch({
-          movieDatas,
+          searchMovies,
           abortController: controller,
         });
         setMovieDatas(fetchedTrending);
