@@ -1,0 +1,15 @@
+.cast,
+.reviews {
+  font-size: 18px;
+  font-weight: 500;
+  margin-right: 10px;
+}
+
+.navlink {
+  padding: 25px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 3px solid purple;
+  list-style: circle;
+}

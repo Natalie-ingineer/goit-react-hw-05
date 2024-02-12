@@ -1,7 +1,4 @@
-import { NavLink, Outlet } from "react-router-dom";
 import css from "./DetailsPage.module.css";
-import { Suspense } from "react";
-import { Loader } from "./Loader/Loader";
 
 export const DetailsPage = ({ movie }) => {
   const defaultImg =
@@ -34,23 +31,6 @@ export const DetailsPage = ({ movie }) => {
               </p>
             </div>
           </div>
-
-          <ul className={css.navlink}>
-            Additional information
-            <li>
-              <NavLink to="cast" className={css.cast}>
-                Movie cast
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="reviews" className={css.reviews}>
-                Movie reviews
-              </NavLink>
-            </li>
-          </ul>
-          <Suspense fallback={<Loader />}>
-            <Outlet />
-          </Suspense>
         </>
       )}
     </div>
