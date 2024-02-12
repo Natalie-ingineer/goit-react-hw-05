@@ -2,9 +2,12 @@ import { getTrending } from "../api";
 import { useState, useEffect } from "react";
 import { MovieList } from "../components/MovieList";
 import { HomePageTitle } from "../components/HomePageTitle";
+import { ErrorMessage } from "../components/ErrorMessage/ErrorMessage";
+import { Loader } from "../components/Loader/Loader";
 
 export default function HomePage() {
   const [trendings, setTrending] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
   useEffect(() => {
@@ -12,6 +15,8 @@ export default function HomePage() {
 
     async function fetchData() {
       try {
+        setError(false);
+        setLoading(true);
         const fetchedTrending = await getTrending({
           abortController: controller,
         });
@@ -20,8 +25,11 @@ export default function HomePage() {
         if (error.code !== "ERR_CANCELED") {
           setError(true);
         }
+      } finally {
+        setLoading(false);
       }
     }
+
     fetchData();
 
     return () => {
@@ -32,7 +40,8 @@ export default function HomePage() {
   return (
     <div>
       <HomePageTitle>Trending today</HomePageTitle>
-      {error && <p>Oops! ERROR!</p>}
+      {error && <ErrorMessage />}
+      {loading && <Loader load={loading} />}
       {trendings.length > 0 && <MovieList items={trendings} />}
     </div>
   );

@@ -1,28 +1,41 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getMovieByIdCast } from "../api";
+import { ErrorMessage } from "../components/ErrorMessage/ErrorMessage";
+import { Loader } from "../components/Loader/Loader";
 
 export const MovieCast = () => {
   const { movieId } = useParams();
   const [casts, setCasts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const defaultImg =
-    "https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700";
+    "https://dl-media.viber.com/10/share/2/long/vibes/icon/image/0x0/95e0/5688fdffb84ff8bed4240bcf3ec5ac81ce591d9fa9558a3a968c630eaba195e0.jpg";
 
   useEffect(() => {
     if (!movieId) return;
 
     async function fetchData() {
       try {
+        setError(false);
+        setLoading(true);
         const fetchedMovie = await getMovieByIdCast(movieId);
         setCasts(fetchedMovie);
-      } catch (error) {}
+      } catch (error) {
+        setError(true);
+      } finally {
+        setLoading(false);
+      }
     }
+
     fetchData();
   }, [movieId]);
 
   return (
     <div>
+      {error && <ErrorMessage />}
+      {loading && <Loader load={loading} />}
       {!casts.length && <p>We don't have any casts for this movie</p>}
       {casts.length > 0 && (
         <ul>

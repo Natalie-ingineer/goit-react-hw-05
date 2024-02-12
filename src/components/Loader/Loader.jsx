@@ -1,16 +1,15 @@
-import css from "./Loader.module.css";
-import { FidgetSpinner } from "react-loader-spinner";
+import { DNA } from "react-loader-spinner";
 
 export const Loader = ({ load }) => {
   return (
     <div>
-      <FidgetSpinner
+      <DNA
         visible={true}
         height="80"
         width="80"
-        ariaLabel="fidget-spinner-loading"
+        ariaLabel="dna-loading"
         wrapperStyle={{}}
-        wrapperClass="fidget-spinner-wrapper"
+        wrapperClass="dna-wrapper"
       />
     </div>
   );
