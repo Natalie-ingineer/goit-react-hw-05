@@ -1,25 +1,12 @@
-import { NavLink, Outlet, useLocation } from "react-router-dom";
-import { useRef, useEffect } from "react";
-import { BackLink } from "./BackLink";
+import { NavLink, Outlet } from "react-router-dom";
 import css from "./DetailsPage.module.css";
 
 export const DetailsPage = ({ movie }) => {
-  const location = useLocation("/movies");
-  console.log(location);
-  const backLinkRef = useRef("");
-
-  useEffect(() => {
-    backLinkRef.current = location.state || "/";
-  }, [location.state]);
-
-  console.log(backLinkRef.current);
-
   const defaultImg =
     "https://dl-media.viber.com/10/share/2/long/vibes/icon/image/0x0/95e0/5688fdffb84ff8bed4240bcf3ec5ac81ce591d9fa9558a3a968c630eaba195e0.jpg";
 
   return (
     <div className={css.wraperPage}>
-      <BackLink href={backLinkRef.current ?? "/"}>Go Back!</BackLink>
       {movie && (
         <>
           <div className={css.wraper}>
