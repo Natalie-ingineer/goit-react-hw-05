@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { getMovieByIdCast } from "../api";
 import { ErrorMessage } from "../components/ErrorMessage/ErrorMessage";
 
-export const MovieCast = () => {
+export default function MovieCast() {
   const { movieId } = useParams();
   const [casts, setCasts] = useState([]);
 
@@ -33,7 +33,7 @@ export const MovieCast = () => {
     <div>
       {error && <ErrorMessage />}
 
-      {!casts.length && <p>We don't have any casts for this movie</p>}
+      {!casts.length && <p>We do not have any casts for this movie</p>}
       {casts.length > 0 && (
         <ul>
           {casts.map((cast) => (
@@ -57,4 +57,4 @@ export const MovieCast = () => {
       )}
     </div>
   );
-};
+}

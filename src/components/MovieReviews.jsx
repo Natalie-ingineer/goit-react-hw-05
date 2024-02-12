@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { getMovieByIdReviews } from "../api";
 import { ErrorMessage } from "../components/ErrorMessage/ErrorMessage";
 
-export const MovieReviews = () => {
+export default function MovieReviews() {
   const { movieId } = useParams();
   const [reviews, setReviews] = useState([]);
 
@@ -30,7 +30,7 @@ export const MovieReviews = () => {
     <div>
       {error && <ErrorMessage />}
 
-      {!reviews.length && <p>We don't have any reviews for this movie</p>}
+      {!reviews.length && <p>We do not have any reviews for this movie</p>}
       {reviews.length > 0 && (
         <ul>
           {reviews.map((review) => (
@@ -44,4 +44,4 @@ export const MovieReviews = () => {
       )}
     </div>
   );
-};
+}
