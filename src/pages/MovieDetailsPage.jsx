@@ -12,13 +12,9 @@ export default function MovieDetailsPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const location = useLocation();
-  console.log(location);
-  const backLinkRef = useRef(location.state?.from || "/");
-  // console.log(backLinkRef.current);
+  const backLinkRef = useRef(location.state);
 
   useEffect(() => {
-    backLinkRef.current = location.state || "/";
-
     if (!movieId) return;
 
     async function fetchData() {
@@ -37,11 +33,11 @@ export default function MovieDetailsPage() {
     }
 
     fetchData();
-  }, [movieId, location.state]);
+  }, [movieId]);
 
   return (
     <div>
-      <BackLink href={backLinkRef.current}>Go Back!</BackLink>
+      <BackLink href={backLinkRef.current ?? "/"}>Go Back!</BackLink>
       {error && <ErrorMessage />}
       {loading && <Loader load={loading} />}
       <DetailsPage movie={movie} />
