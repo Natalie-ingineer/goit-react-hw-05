@@ -2,12 +2,11 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getMovieByIdCast } from "../api";
 import { ErrorMessage } from "../components/ErrorMessage/ErrorMessage";
-import { Loader } from "../components/Loader/Loader";
 
 export const MovieCast = () => {
   const { movieId } = useParams();
   const [casts, setCasts] = useState([]);
-  const [loading, setLoading] = useState(false);
+
   const [error, setError] = useState(false);
 
   const defaultImg =
@@ -19,13 +18,11 @@ export const MovieCast = () => {
     async function fetchData() {
       try {
         setError(false);
-        setLoading(true);
+
         const fetchedMovie = await getMovieByIdCast(movieId);
         setCasts(fetchedMovie);
       } catch (error) {
         setError(true);
-      } finally {
-        setLoading(false);
       }
     }
 
@@ -35,7 +32,7 @@ export const MovieCast = () => {
   return (
     <div>
       {error && <ErrorMessage />}
-      {loading && <Loader load={loading} />}
+
       {!casts.length && <p>We don't have any casts for this movie</p>}
       {casts.length > 0 && (
         <ul>

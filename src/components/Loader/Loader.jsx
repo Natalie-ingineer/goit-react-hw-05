@@ -1,6 +1,6 @@
 import { DNA } from "react-loader-spinner";
 
-export const Loader = ({ load }) => {
+export const Loader = () => {
   return (
     <div>
       <DNA

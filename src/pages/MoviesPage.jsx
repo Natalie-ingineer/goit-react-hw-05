@@ -4,11 +4,10 @@ import { useSearchParams } from "react-router-dom";
 import { MovieList } from "../components/MovieList";
 import { getMovieBySearch } from "../api";
 import { ErrorMessage } from "../components/ErrorMessage/ErrorMessage";
-import { Loader } from "../components/Loader/Loader";
 
 export default function MoviesPage() {
   const [movieDatas, setMovieDatas] = useState([]);
-  const [loading, setLoading] = useState(false);
+
   const [error, setError] = useState(false);
 
   const [params, setParams] = useSearchParams();
@@ -24,7 +23,7 @@ export default function MoviesPage() {
     async function fetchData() {
       try {
         setError(false);
-        setLoading(true);
+
         const fetchedTrending = await getMovieBySearch({
           searchMovies,
           abortController: controller,
@@ -34,8 +33,6 @@ export default function MoviesPage() {
         if (error.code !== "ERR_CANCELED") {
           setError(true);
         }
-      } finally {
-        setLoading(false);
       }
     }
     fetchData();
@@ -52,7 +49,7 @@ export default function MoviesPage() {
   return (
     <div>
       {error && <ErrorMessage />}
-      {loading && <Loader load={loading} />}
+
       <SearchBar onSearch={handleSubmit} />
       {searchMovies.length > 0 && <MovieList items={movieDatas} />}
     </div>

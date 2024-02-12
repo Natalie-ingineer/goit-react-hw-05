@@ -3,13 +3,13 @@ import { useState, useEffect, useRef } from "react";
 import { getMovieById } from "../api";
 import { DetailsPage } from "../components/DetailsPage";
 import { ErrorMessage } from "../components/ErrorMessage/ErrorMessage";
-import { Loader } from "../components/Loader/Loader";
+
 import { BackLink } from "../components/BackLink";
 
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
-  const [loading, setLoading] = useState(false);
+
   const [error, setError] = useState(false);
   const location = useLocation();
   const backLinkRef = useRef(location.state);
@@ -20,15 +20,13 @@ export default function MovieDetailsPage() {
     async function fetchData() {
       try {
         setError(false);
-        setLoading(true);
+
         const fetchedMovie = await getMovieById(movieId);
         setMovie(fetchedMovie);
       } catch (error) {
         if (error.code !== "ERR_CANCELED") {
           setError(true);
         }
-      } finally {
-        setLoading(false);
       }
     }
 
@@ -39,7 +37,7 @@ export default function MovieDetailsPage() {
     <div>
       <BackLink href={backLinkRef.current ?? "/"}>Go Back!</BackLink>
       {error && <ErrorMessage />}
-      {loading && <Loader load={loading} />}
+
       <DetailsPage movie={movie} />
     </div>
   );
