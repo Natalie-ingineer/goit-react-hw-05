@@ -1,11 +1,16 @@
 .nav {
   display: flex;
   gap: 4px;
+  border-bottom: 3px solid purple;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .link {
   color: black;
   text-decoration: none;
+  margin-bottom: 15px;
+  margin-right: 10px;
 }
 
 .link:hover {
@@ -13,5 +18,5 @@
 }
 
 .active {
-  color: orange;
+  color: purple;
 }
