@@ -37,11 +37,12 @@ export const DetailsPage = ({ movie }) => {
 
             <div className={css.wrapDescriptions}>
               <p className={css.titleMovie}>{movie.original_title}</p>
-              <p className={css.overview}>Overview: {movie.overview}</p>
+              <span>Overview</span>
+              <p className={css.overview}>{movie.overview}</p>
+              <span> Genres</span>
               <p className={css.genres}>
-                Genres: {movie.genres.map((genre) => genre.name).join(", ")}
+                {movie.genres.map((genre) => genre.name).join(", ")}
               </p>
-              <p className={css.average}>Vote average: {movie.vote_average}</p>
             </div>
           </div>
 

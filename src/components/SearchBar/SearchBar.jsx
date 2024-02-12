@@ -1,5 +1,5 @@
 import css from "./SearchBar.module.css";
-import { useId } from "react";
+import { HiMiniMagnifyingGlass } from "react-icons/hi2";
 import toast from "react-hot-toast";
 
 export const SearchBar = ({ onSearch }) => {
@@ -26,6 +26,7 @@ export const SearchBar = ({ onSearch }) => {
           placeholder="Search movie"
         />
         <button type="submit" className={css.button}>
+          {<HiMiniMagnifyingGlass />}
           Search
         </button>
       </form>
