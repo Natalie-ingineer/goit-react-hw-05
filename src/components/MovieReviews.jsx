@@ -21,6 +21,7 @@ export const MovieReviews = () => {
 
   return (
     <div>
+      {!reviews.length && <p>We don't have any reviews for this movie</p>}
       {reviews.length > 0 && (
         <ul>
           {reviews.map((review) => (

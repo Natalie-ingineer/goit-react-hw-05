@@ -1,8 +1,9 @@
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { NavLink, Outlet, useLocation } from "react-router-dom";
 import { useRef, useEffect } from "react";
 import { BackLink } from "./BackLink";
+import css from "./DetailsPage.module.css";
 
-export const HomeDetailsPage = ({ movie }) => {
+export const DetailsPage = ({ movie }) => {
   const location = useLocation("/movies");
   console.log(location);
   const backLinkRef = useRef("");
@@ -17,12 +18,12 @@ export const HomeDetailsPage = ({ movie }) => {
     "https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700";
 
   return (
-    <div>
+    <div className={css.wraperPage}>
       <BackLink href={backLinkRef.current ?? "/"}>Go Back!</BackLink>
       {movie && (
         <>
-          <div>
-            <div>
+          <div className={css.wraper}>
+            <div className={css.wrapImg}>
               <img
                 src={
                   movie.poster_path
@@ -34,19 +35,24 @@ export const HomeDetailsPage = ({ movie }) => {
               />
             </div>
 
-            <div>
-              <p>{movie.original_title}</p>
-              <p>Overview: {movie.overview}</p>
-              <p>
+            <div className={css.wrapDescriptions}>
+              <p className={css.titleMovie}>{movie.original_title}</p>
+              <p className={css.overview}>Overview: {movie.overview}</p>
+              <p className={css.genres}>
                 Genres: {movie.genres.map((genre) => genre.name).join(", ")}
               </p>
-              <p>Vote_average: {movie.vote_average}</p>
+              <p className={css.average}>Vote average: {movie.vote_average}</p>
             </div>
           </div>
-          <>
-            <Link to="cast">Movie cast</Link>
-            <Link to="reviews">Movie reviews</Link>
-          </>
+          <div className={css.navlink}>
+            Additional information
+            <NavLink to="cast" className={css.cast}>
+              Movie cast
+            </NavLink>
+            <NavLink to="reviews" className={css.reviews}>
+              Movie reviews
+            </NavLink>
+          </div>
           <Outlet />
         </>
       )}

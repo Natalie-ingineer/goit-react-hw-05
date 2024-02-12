@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getMovieById } from "../api";
-import { HomeDetailsPage } from "../components/HomeDetailsPage";
+import { DetailsPage } from "../components/DetailsPage";
 
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
@@ -21,7 +21,7 @@ export default function MovieDetailsPage() {
 
   return (
     <div>
-      <HomeDetailsPage movie={movie} />
+      <DetailsPage movie={movie} />
     </div>
   );
 }

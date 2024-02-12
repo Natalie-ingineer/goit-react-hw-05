@@ -1,0 +1,46 @@
+.wraperPage {
+  display: flex;
+  flex-direction: column;
+}
+
+.wraper {
+  display: flex;
+  padding: 0;
+  border-bottom: 3px solid purple;
+}
+
+.wrapImg {
+  margin-right: 50px;
+  margin-bottom: 20px;
+}
+
+.wrapDescriptions {
+  width: 650px;
+}
+
+.titleMovie {
+  font-size: 24px;
+  font-weight: 600;
+
+  margin-bottom: 25px;
+}
+
+.overview,
+.genres,
+.average {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.cast,
+.reviews {
+  font-size: 18px;
+  font-weight: 500;
+  margin-right: 10px;
+}
+
+.navlink {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+}
