@@ -23,7 +23,7 @@ export const SearchBar = ({ onSearch }) => {
           type="text"
           // autocomplete="off"
           // autofocus
-          placeholder="Search images and photos"
+          placeholder="Search movie"
         />
         <button type="submit" className={css.button}>
           Search

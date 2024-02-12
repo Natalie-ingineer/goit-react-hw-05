@@ -23,6 +23,7 @@ export const MovieCast = () => {
 
   return (
     <div>
+      {!casts.length && <p>We don't have any casts for this movie</p>}
       {casts.length > 0 && (
         <ul>
           {casts.map((cast) => (

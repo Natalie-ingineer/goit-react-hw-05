@@ -29,9 +29,9 @@ p {
 }
 
 ul,
-ol {
-  margin: 0;
-  padding: 0;
+ol,
+a {
+  list-style: circle;
 }
 
 img {

@@ -44,15 +44,21 @@ export const DetailsPage = ({ movie }) => {
               <p className={css.average}>Vote average: {movie.vote_average}</p>
             </div>
           </div>
-          <div className={css.navlink}>
+
+          <ul className={css.navlink}>
             Additional information
-            <NavLink to="cast" className={css.cast}>
-              Movie cast
-            </NavLink>
-            <NavLink to="reviews" className={css.reviews}>
-              Movie reviews
-            </NavLink>
-          </div>
+            <li>
+              <NavLink to="cast" className={css.cast}>
+                Movie cast
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="reviews" className={css.reviews}>
+                Movie reviews
+              </NavLink>
+            </li>
+          </ul>
+
           <Outlet />
         </>
       )}

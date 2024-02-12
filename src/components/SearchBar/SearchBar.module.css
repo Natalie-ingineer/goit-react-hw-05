@@ -1,7 +1,7 @@
 header {
   display: flex;
   justify-content: center;
-  background-color: darkorchid;
+
   padding: 0;
   margin: 0;
 }
@@ -34,7 +34,7 @@ input {
   text-decoration: none;
   cursor: pointer;
   border: 2px solid grey; /* Колір рамки кнопки */
-  color: coral; /* Колір тексту кнопки */
+  color: purple; /* Колір тексту кнопки */
   border-radius: 15px; /* Закруглені кути */
   transition: background-color 0.3s ease; /* Плавна зміна колірного фону при наведенні */
 }
